@@ -74,6 +74,8 @@ docker compose up --build
 # Then: POST http://localhost:3000/api/simulacro/migrate with body { "clearBefore": true }
 ```
 
+**Platforms:** The project works on both **Windows** and **Ubuntu/Linux**. Paths use Node’s `path` module; the repo uses LF line endings (`.gitattributes`). On Windows you can use PowerShell or CMD; for migration without curl, use Postman or `Invoke-RestMethod`.
+
 ---
 
 **SaludPlus** – Hybrid persistence (PostgreSQL + MongoDB) – 2026

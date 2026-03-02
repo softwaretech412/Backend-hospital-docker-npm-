@@ -147,10 +147,19 @@ Errors return `{ "ok": false, "error": "..." }` with appropriate HTTP status (40
 
 2. Copy environment template and set variables:
 
+   **Linux / macOS:**
    ```bash
    cp .env.example .env
-   # Edit .env with your DATABASE_URL, MONGODB_URI, MONGODB_DB, etc.
    ```
+   **Windows (Command Prompt):**
+   ```cmd
+   copy .env.example .env
+   ```
+   **Windows (PowerShell):**
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+   Then edit `.env` with your `DATABASE_URL`, `MONGODB_URI`, and `MONGODB_DB`.
 
 3. Place the CSV file at the path set in `SIMULACRO_CSV_PATH` (default: `./data/simulation_saludplus_data.csv`). Columns expected: `appointment_id`, `appointment_date`, `patient_name`, `patient_email`, `patient_phone`, `patient_address`, `doctor_name`, `doctor_email`, `specialty`, `treatment_code`, `treatment_description`, `treatment_cost`, `insurance_provider`, `coverage_percentage`, `amount_paid`.
 
@@ -162,9 +171,15 @@ Errors return `{ "ok": false, "error": "..." }` with appropriate HTTP status (40
 
 5. Run the migration (once DBs are up; use `clearBefore: true` to reset and reload):
 
+   **Linux / macOS / WSL:**
    ```bash
-   curl -X POST http://localhost:3000/api/simulacro/migrate -H "Content-Type: application/json" -d "{\"clearBefore\": true}"
+   curl -X POST http://localhost:3000/api/simulacro/migrate -H "Content-Type: application/json" -d '{"clearBefore": true}'
    ```
+   **Windows (PowerShell):**
+   ```powershell
+   Invoke-RestMethod -Uri http://localhost:3000/api/simulacro/migrate -Method POST -ContentType "application/json" -Body '{"clearBefore": true}'
+   ```
+   Or use Postman: `POST http://localhost:3000/api/simulacro/migrate` with body `{ "clearBefore": true }`.
 
 ### Run with Docker
 
@@ -194,8 +209,16 @@ You can run the whole stack (PostgreSQL, MongoDB, and the API) with Docker Compo
 ```bash
 docker compose up -d postgres mongo
 ```
+*(On older Docker setups you may need `docker-compose` with a hyphen.)*
 
 Then in `.env` use `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/saludplus` and `MONGODB_URI=mongodb://localhost:27017`, and start the app with `npm start`.
+
+### Platform notes (Windows & Ubuntu / Linux)
+
+- **Node.js:** Install LTS from [nodejs.org](https://nodejs.org). On Windows, avoid installing in a path with spaces (e.g. use `C:\Node` or the default).
+- **Paths:** All file paths in the app use Node’s `path` module and work on both Windows and Linux. In `.env`, you can use forward slashes for `SIMULACRO_CSV_PATH` (e.g. `./data/simulation_saludplus_data.csv`) on all platforms.
+- **Line endings:** The repo uses LF (`.gitattributes`). Git will normalize line endings on checkout so the codebase is consistent on Windows and Ubuntu.
+- **Docker:** On Windows use [Docker Desktop](https://www.docker.com/products/docker-desktop/); on Ubuntu use the standard Docker Engine. Use `docker compose` (space) or `docker-compose` (hyphen) depending on your version.
 
 ## Usage examples
 
