@@ -177,7 +177,7 @@ You can run the whole stack (PostgreSQL, MongoDB, and the API) with Docker Compo
    ```
 
    This starts:
-   - **postgres** on port 5432 (user `postgres`, password `comet`, database `saludplus`)
+   - **postgres** on port 5432 (user `postgres`, password `postgres`, database `saludplus`)
    - **mongo** on port 27017
    - **app** on port 3000 (API)
 
@@ -195,7 +195,7 @@ You can run the whole stack (PostgreSQL, MongoDB, and the API) with Docker Compo
 docker compose up -d postgres mongo
 ```
 
-Then in `.env` use `DATABASE_URL=postgresql://postgres:comet@localhost:5432/saludplus` and `MONGODB_URI=mongodb://localhost:27017`, and start the app with `npm start`.
+Then in `.env` use `DATABASE_URL=postgresql://postgres:postgres@localhost:5432/saludplus` and `MONGODB_URI=mongodb://localhost:27017`, and start the app with `npm start`.
 
 ## Usage examples
 

@@ -3,7 +3,7 @@ services:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: comet
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: saludplus
     ports:
       - "5432:5432"
@@ -29,7 +29,7 @@ services:
       - "3000:3000"
     environment:
       PORT: 3000
-      DATABASE_URL: postgresql://postgres:comet@postgres:5432/saludplus
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/saludplus
       MONGODB_URI: mongodb://mongo:27017
       MONGODB_DB: saludplus
       SIMULACRO_CSV_PATH: ./data/simulation_saludplus_data.csv
