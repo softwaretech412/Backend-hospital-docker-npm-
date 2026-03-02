@@ -1,0 +1,90 @@
+{
+  "info": {
+    "name": "SaludPlus API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "patientEmail", "value": "valeria.g@mail.com" },
+    { "key": "doctorId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "GET Simulacro info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/simulacro"
+      }
+    },
+    {
+      "name": "POST Migrate (clear before)",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"clearBefore\": true\n}"},
+        "url": "{{baseUrl}}/api/simulacro/migrate"
+      }
+    },
+    {
+      "name": "POST Migrate (append)",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{}"},
+        "url": "{{baseUrl}}/api/simulacro/migrate"
+      }
+    },
+    {
+      "name": "GET Doctors",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/doctors"
+      }
+    },
+    {
+      "name": "GET Doctors by specialty",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/doctors?specialty=Cardiology"
+      }
+    },
+    {
+      "name": "GET Doctor by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/doctors/{{doctorId}}"
+      }
+    },
+    {
+      "name": "PUT Update Doctor",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Dr. Carlos Ruiz Updated\",\n  \"email\": \"c.ruiz@saludplus.com\",\n  \"specialty\": \"Cardiology\"\n}"},
+        "url": "{{baseUrl}}/api/doctors/{{doctorId}}"
+      }
+    },
+    {
+      "name": "GET Revenue report",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/reports/revenue"
+      }
+    },
+    {
+      "name": "GET Revenue report (date range)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/reports/revenue?startDate=2024-01-01&endDate=2024-12-31"
+      }
+    },
+    {
+      "name": "GET Patient history",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/patients/{{patientEmail}}/history"
+      }
+    }
+  ]
+}

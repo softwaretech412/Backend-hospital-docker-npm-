@@ -1,0 +1,44 @@
+// "aqui estoy haciendo los archivos NoSQL (colecciones apropiadas)que me puden en el simulacro 
+// aqui va la estructura del documento 
+// 
+// De esta forma modelo los datos MongoDB utilizando el patron de inscrustacion (Embedding).
+// 
+// 
+// Nota que dentro de la cita ya pusimos el nombre del doctor y el nombre del seguro.
+// En SQL esto estaría prohibido (porque causarías redundancia), pero en NoSQL lo hacemos a propósito para que la lectura sea instantánea." */
+
+{
+  "patientEmail": "valeria.g@mail.com",
+  "patientName": "Valeria Gomez",
+  "patientPhone": "+57 300 123 4567",
+  "appointments": [
+    {
+      "appointmentId": "APT-1001",
+      "date": "2024-01-07",
+      "doctorName": "Dr. Carlos Ruiz",
+      "doctorEmail": "c.ruiz@saludplus.com",
+      "specialty": "Cardiology",
+      "treatmentCode": "TRT-007",
+      "treatmentDescription": "Skin Treatment",
+      "treatmentCost": 200000,
+      "insuranceProvider": "ProteccionMedica",
+      "coveragePercentage": 60,
+      "amountPaid": 80000
+    },
+    {
+      "appointmentId": "APT-1050",
+      "date": "2024-02-15",
+      "doctorName": "Dra. Ana Lopez",
+      "doctorEmail": "a.lopez@saludplus.com",
+      "specialty": "Dermatology",
+      "treatmentDescription": "Routine Checkup",
+      "treatmentCost": 150000,
+      "amountPaid": 30000
+    }
+  ],
+  "summary": {
+    "totalAppointments": 2,
+    "totalSpent": 350000,
+    "mostFrequentSpecialty": "Cardiology"
+  }
+}

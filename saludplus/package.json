@@ -1,0 +1,20 @@
+{
+  "name": "saludplus",
+  "version": "1.0.0",
+  "description": "Simulacro Base de Datos",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "migrate": "node scripts/run-migration.js",
+    "migrate:clear": "node scripts/run-migration.js --clear"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.23.0",
+    "pg": "^8.11.3"
+  }
+}

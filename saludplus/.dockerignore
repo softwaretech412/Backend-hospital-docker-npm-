@@ -1,0 +1,11 @@
+node_modules
+.env
+.env.*
+!.env.example
+.git
+.gitignore
+*.log
+.DS_Store
+README.md
+Docs
+SaludPlus_API.postman_collection.json
